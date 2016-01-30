@@ -1,0 +1,6 @@
+sqs/test.py
+sqs/app.py.bk
+sqs/requirements.txt.bk
+sqs/Makefile
+bash/images/*
+bash/_function.sh

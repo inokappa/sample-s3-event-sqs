@@ -1,0 +1,28 @@
+DOCKER_BUILD := docker build \
+                --no-cache=true -t s3-event-watcher .
+DOCKER_RUN := docker run -d --name s3-event-watcher \
+              --env SQS_QUEUE_NAME="YOUR_QUEUE_NAME" \
+              --env AWS_ACCESS_KEY_ID="AKxxxxxxxxxxxxxxxxxxxxxxxx" \
+              --env AWS_SECRET_ACCESS_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
+              --env AWS_REGION="YOUR_REGION" \
+              -v /etc/localtime:/etc/localtime:ro s3-event-watcher
+DOCKER_RM := docker rm -f s3-event-watcher
+DOCKER_APP_LOG := docker exec s3-event-watcher /usr/local/bin/supervisorctl -c /app/supervisord.conf tail app
+DOCKER_LOG := docker logs s3-event-watcher
+
+###
+
+docker-build:
+	@$(DOCKER_BUILD)
+
+docker-run:
+	@$(DOCKER_RUN)
+
+docker-app-log:
+	@$(DOCKER_APP_LOG)
+
+docker-log:
+	@$(DOCKER_LOG)
+
+docker-destroy:
+	@$(DOCKER_RM)
