@@ -1,6 +1,6 @@
 sqs/test.py
 sqs/app.py.bk
 sqs/requirements.txt.bk
-sqs/Makefile
+*/Makefile
 bash/images/*
 bash/_function.sh
