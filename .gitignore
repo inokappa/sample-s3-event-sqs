@@ -4,3 +4,4 @@ sqs/requirements.txt.bk
 */Makefile
 bash/images/*
 bash/_function.sh
+*.pyc
